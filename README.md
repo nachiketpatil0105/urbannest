@@ -58,7 +58,7 @@ assignment-04/
 ## How It Works
 
 **Training pipeline** (`train.py` orchestrates `utils/`):
-- `utils/preprocess.py` — loads train.csv and test.csv, fits LabelEncoders on the union of both splits to avoid unseen-label errors, saves `label_encoders.pkl`
+- `utils/preprocess.py` — loads train.csv and test.csv, fits LabelEncoders on train.csv only, saves `label_encoders.pkl`; unseen labels at inference are handled by `safe_encode()` returning -1
 - `utils/tune.py` — runs Grid Search, Random Search, and Bayesian (Optuna) with 5-fold CV, logs each run to Trackio
 - `utils/evaluate.py` — generates convergence plots, picks the best method by CV MAE, trains the final model on all of train.csv, saves `best_rf_model.pkl`
 
