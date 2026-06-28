@@ -24,7 +24,7 @@ def _is_lfs_pointer(path: Path) -> bool:
 
 def _run_training():
     result = subprocess.run(
-        [sys.executable, str(BASE_DIR / "main.py")],
+        [sys.executable, str(BASE_DIR / "train.py")],
         capture_output=True, text=True,
     )
     if result.returncode != 0:
